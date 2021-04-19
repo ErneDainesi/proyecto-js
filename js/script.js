@@ -8,19 +8,28 @@ const PELICULAS = [
 ];
 
 // Crea los tags li para la lista del HTML
+// A cada uno de estos li le asigno un id distinto
 function crearListaPeliculas() {
   let padre = document.querySelector("#peliculas__lista");
+  let childId = 1;
   for (const pelicula of PELICULAS) {
     let li = document.createElement("li");
     li.innerHTML = pelicula.titulo;
+    li.id = `pelicula${childId}`;
     padre.appendChild(li);
+    childId += 1;
   }
-  pedirUnaPelicula();
 }
 
-function pedirUnaPelicula() {
-  let userInput = document.querySelector("#userInput");
-  console.log(userInput.value);
+// Pide al usuario su nombre y agrega un header con un saludo personalizado
+function saludarUsuario() {
+  let nombre = prompt("Ingrese su nombre");
+  let padre = document.querySelector(".container-fluid");
+  let h1 = document.createElement("h1");
+  h1.innerHTML = `¡Bienvenido ${nombre}!`;
+  h1.id = "saludo";
+  padre.prepend(h1); // Agrego el h1 arriba de la lista
 }
 
+saludarUsuario();
 crearListaPeliculas();
