@@ -1,60 +1,26 @@
+// Por el momento voy a dejar este array (acotado) hasta que veamos lo de AJAX
+// Igualmente, ya tengo armado un .json con las peliculas
 const PELICULAS = [
-  "Avengers",
-  "Good Will Hunting",
-  "The Trueman Show",
-  "Mission: Impossible III",
-  "Indiana Jones and the Last Crusade",
+  { titulo: "Star Wars: A New Hope", genero: "Ciencia Ficcion", precio: 100 },
+  { titulo: "Top Gun", genero: "Drama", precio: 100 },
+  { titulo: "Scarface", genero: "Accion", precio: 100 },
+  { titulo: "Back to the Future", genero: "Ciencia Ficcion", precio: 100 },
 ];
 
-class Usuario {
-  constructor(nombre, peliculas) {
-    this.nombre = nombre;
-    this.peliculas = peliculas;
+// Crea los tags li para la lista del HTML
+function crearListaPeliculas() {
+  let padre = document.querySelector("#peliculas__lista");
+  for (const pelicula of PELICULAS) {
+    let li = document.createElement("li");
+    li.innerHTML = pelicula.titulo;
+    padre.appendChild(li);
   }
-
-  peliculasDelUsuario() {
-    return this.peliculas;
-  }
-
-  nombreDelUsuario() {
-    return this.nombre;
-  }
+  pedirUnaPelicula();
 }
 
-function preguntarNombre() {
-  var nombre = prompt("Ingrese su nombre");
-  return nombre;
+function pedirUnaPelicula() {
+  let userInput = document.querySelector("#userInput");
+  console.log(userInput.value);
 }
 
-function elegirPelicula() {
-  var listaPelis = PELICULAS.join(", ");
-  var pelicula = prompt("Eliga una de las siguientes peliculas: " + listaPelis);
-  // mientras la pelicula que eliga el usuario no se encuentre dentro del listado de peliculas,
-  // le vuelvo a pedir que ingrese otra, hasta que ingrese una disponible
-  while (!PELICULAS.includes(pelicula)) {
-    pelicula = prompt(
-      "Esa pelicula no se encuentra en el listado, eliga otra: " + listaPelis
-    );
-  }
-  return pelicula;
-}
-
-function informarPeliculasSeleccionadas(usuario) {
-  var peliculas = usuario.peliculasDelUsuario().join(", ");
-  var nombre = usuario.nombreDelUsuario();
-  console.log(nombre + " eligio las siguientes peliculas: " + peliculas);
-}
-
-function main() {
-  var nombre = preguntarNombre();
-  var peliculasElegidas = [];
-  var seguir = "s";
-  while (seguir === "s") {
-    peliculasElegidas.push(elegirPelicula());
-    seguir = prompt("¿Quiere elegir otra pelicula? (s/n)");
-  }
-  const usuario = new Usuario(nombre, peliculasElegidas);
-  informarPeliculasSeleccionadas(usuario);
-}
-
-main();
+crearListaPeliculas();
