@@ -1,0 +1,7 @@
+.peliculas {
+  display: flex;
+  flex-direction: column; }
+  .peliculas__lista {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly; }
