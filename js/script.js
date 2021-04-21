@@ -18,29 +18,22 @@ const agregarALocalStorage = (carrito) => {
   );
 };
 
-class Carrito {
-  #totalAPagar;
+// Funcion para recuperar la lista de los elementos dentro del carrito
+const recuperarCarritoDeLocalStorage = () => {
+  return JSON.parse(localStorage.getItem("carrito"));
+};
 
+class Carrito {
   constructor() {
     this.enCarrito = [];
-    this.#totalAPagar = 0;
   }
 
   sumarACarrito(pelicula) {
     if (!this.enCarrito.includes(pelicula)) {
       this.enCarrito.push(pelicula);
-      //this.#sumarATotal(pelicula.obtenerPrecio());
     } else {
       alert("¡No puede alquilar mas de una vez la misma pelicula!");
     }
-  }
-
-  #sumarATotal(precio) {
-    this.#totalAPagar += precio;
-  }
-
-  totalCarrito() {
-    return this.#totalAPagar;
   }
 
   elementosDentroDeCarrito() {
@@ -48,20 +41,30 @@ class Carrito {
   }
 }
 
-class Pelicula {
-  constructor(titulo, genero, precio) {
-    this.titulo = titulo;
-    this.genero = genero;
-    this.precio = parseFloat(precio);
-  }
+// Crea boton para ver contenido dentro del carrito
+function generarBotonCarrito() {
+  let padre = document.querySelector("#row1");
+  let btn = document.createElement("button");
+  btn.id = "verCarritoBtn";
+  btn.innerHTML = "Ver Carrito";
+  btn.className = "btn btn-success";
+  padre.insertAdjacentElement("afterend", btn);
+}
 
-  obtenerPrecio() {
-    return this.precio;
-  }
+// Lanza un alert con los elementos dentro del carrito cuando se aprieta el boton "Ver Carrito"
+function crearEventoParaBotonCarrito() {
+  document
+    .querySelector("#verCarritoBtn")
+    .addEventListener("click", function () {
+      alert(recuperarCarritoDeLocalStorage().join(", "));
+    });
 }
 
 var carrito = new Carrito();
+
 /* Evento cuando el usuario hace click en uno de los botones para alquilar */
+// Se agrega la pelicula elegida a la lista del carrito
+// Si el carrito tiene 1 elemento o menos, se crea el boton para ver el contenido dentro del carrito
 document
   .querySelector(".container-fluid")
   .addEventListener("click", function (e) {
@@ -76,4 +79,11 @@ document
       }
     }
     agregarALocalStorage(carrito);
+    if (
+      recuperarCarritoDeLocalStorage().length <= 1 &&
+      e.target.id != "verCarritoBtn"
+    ) {
+      generarBotonCarrito();
+      crearEventoParaBotonCarrito();
+    }
   });
