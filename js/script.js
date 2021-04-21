@@ -7,29 +7,73 @@ const PELICULAS = [
   { titulo: "Back to the Future", genero: "Ciencia Ficcion", precio: 100 },
 ];
 
-// Crea los tags li para la lista del HTML
-// A cada uno de estos li le asigno un id distinto
-function crearListaPeliculas() {
-  let padre = document.querySelector("#peliculas__lista");
-  let childId = 1;
-  for (const pelicula of PELICULAS) {
-    let li = document.createElement("li");
-    li.innerHTML = pelicula.titulo;
-    li.id = `pelicula${childId}`;
-    padre.appendChild(li);
-    childId += 1;
+// Funcion para poder conseguir el numero de id de tag pasado por parametro
+const getIdNumber = (tagId) => tagId.charAt(tagId.length - 1);
+
+// Funcion para agregar a localStorage el carrito del cliente
+const agregarALocalStorage = (carrito) => {
+  localStorage.setItem(
+    "carrito",
+    JSON.stringify(carrito.elementosDentroDeCarrito())
+  );
+};
+
+class Carrito {
+  #totalAPagar;
+
+  constructor() {
+    this.enCarrito = [];
+    this.#totalAPagar = 0;
+  }
+
+  sumarACarrito(pelicula) {
+    if (!this.enCarrito.includes(pelicula)) {
+      this.enCarrito.push(pelicula);
+      //this.#sumarATotal(pelicula.obtenerPrecio());
+    } else {
+      alert("¡No puede alquilar mas de una vez la misma pelicula!");
+    }
+  }
+
+  #sumarATotal(precio) {
+    this.#totalAPagar += precio;
+  }
+
+  totalCarrito() {
+    return this.#totalAPagar;
+  }
+
+  elementosDentroDeCarrito() {
+    return this.enCarrito;
   }
 }
 
-// Pide al usuario su nombre y agrega un header con un saludo personalizado
-function saludarUsuario() {
-  let nombre = prompt("Ingrese su nombre");
-  let padre = document.querySelector(".container-fluid");
-  let h1 = document.createElement("h1");
-  h1.innerHTML = `¡Bienvenido ${nombre}!`;
-  h1.id = "saludo";
-  padre.prepend(h1); // Agrego el h1 arriba de la lista
+class Pelicula {
+  constructor(titulo, genero, precio) {
+    this.titulo = titulo;
+    this.genero = genero;
+    this.precio = parseFloat(precio);
+  }
+
+  obtenerPrecio() {
+    return this.precio;
+  }
 }
 
-saludarUsuario();
-crearListaPeliculas();
+var carrito = new Carrito();
+/* Evento cuando el usuario hace click en uno de los botones para alquilar */
+document
+  .querySelector(".container-fluid")
+  .addEventListener("click", function (e) {
+    let listaPeliculas = document.querySelectorAll(
+      ".peliculas__tituloPelicula"
+    );
+    for (const pelicula of listaPeliculas) {
+      if (getIdNumber(e.target.id) == getIdNumber(pelicula.id)) {
+        // Le aplico trim porque me estaba guardando el string con espacios
+        // generador por la extension de prettier en vscode
+        carrito.sumarACarrito(pelicula.textContent.trim());
+      }
+    }
+    agregarALocalStorage(carrito);
+  });
