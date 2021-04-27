@@ -1,11 +1,20 @@
+body {
+  background-color: #560a86;
+}
+
 .peliculas {
   display: flex;
   flex-direction: column;
+  text-align: center;
 
   &__lista {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+  }
+
+  &__tituloPelicula {
+    color: #ffff;
   }
 }
 
@@ -15,4 +24,14 @@
   right: 0;
   margin-bottom: 2%;
   margin-right: 2%;
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  #logo {
+    width: 600px;
+    height: 600px;
+  }
 }

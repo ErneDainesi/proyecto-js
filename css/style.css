@@ -1,10 +1,16 @@
+body {
+  background-color: #560a86; }
+
 .peliculas {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  text-align: center; }
   .peliculas__lista {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly; }
+  .peliculas__tituloPelicula {
+    color: #ffff; }
 
 #verCarritoBtn {
   position: fixed;
@@ -12,3 +18,11 @@
   right: 0;
   margin-bottom: 2%;
   margin-right: 2%; }
+
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+  #header #logo {
+    width: 600px;
+    height: 600px; }
