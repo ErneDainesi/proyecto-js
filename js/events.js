@@ -1,67 +1,5 @@
-class Pelicula {
-  constructor(titulo, genero, precio) {
-    this.titulo = titulo;
-    this.genero = genero;
-    this.precio = precio;
-  }
-
-  peliculaTitulo() {
-    return this.titulo;
-  }
-
-  peliculaGenero() {
-    return this.genero;
-  }
-
-  peliculaPrecio() {
-    return this.precio;
-  }
-}
-
-class Carrito {
-  constructor() {
-    this.enCarrito = [];
-    this.total = 0;
-  }
-
-  sumarACarrito(nombrePelicula) {
-    for (const objPelicula of PELICULAS) {
-      if (
-        nombrePelicula == objPelicula.peliculaTitulo() &&
-        !this.enCarrito.includes(objPelicula)
-      ) {
-        this.enCarrito.push(objPelicula);
-        this.total += objPelicula.peliculaPrecio();
-      } else if (
-        nombrePelicula == objPelicula.peliculaTitulo() &&
-        this.enCarrito.includes(objPelicula)
-      ) {
-        alert("¡No se puede alquilar mas de una vez la misma pelicula!");
-      }
-    }
-  }
-
-  elementosDentroDeCarrito() {
-    return this.enCarrito;
-  }
-
-  totalCarrito() {
-    return this.total;
-  }
-}
-
-// Funcion para poder conseguir el numero de id de tag pasado por parametro
 const getIdNumber = (tagId) => tagId.charAt(tagId.length - 1);
 
-// Funcion para agregar a localStorage el carrito del cliente
-const agregarALocalStorage = (carrito) => {
-  localStorage.setItem(
-    "carrito",
-    JSON.stringify(carrito.elementosDentroDeCarrito())
-  );
-};
-
-// Funcion para recuperar la lista de los elementos dentro del carrito
 const recuperarCarritoDeLocalStorage = () => {
   return JSON.parse(localStorage.getItem("carrito"));
 };
@@ -117,7 +55,7 @@ document
         break; // hago esto para que una vez que encuentre la pelicula, deje de recorrer la lista. De esta manera, es un poco mas eficiente.
       }
     }
-    agregarALocalStorage(carrito);
+    carrito.agregarALocalStorage();
     if (
       recuperarCarritoDeLocalStorage().length <= 1 &&
       e.target.id != "verCarritoBtn"
