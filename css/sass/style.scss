@@ -29,9 +29,19 @@ body {
 #header {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  text-align: center;
   #logo {
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
+  }
+}
+
+#filterButtonsContainer {
+  margin-bottom: 2%;
+}
+
+.nav {
+  &-item {
+    margin: 1%;
   }
 }
