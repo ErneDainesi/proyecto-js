@@ -1,66 +1,97 @@
-const getIdNumber = (tagId) => tagId.charAt(tagId.length - 1);
-
-const recuperarCarritoDeLocalStorage = () => {
-  return JSON.parse(localStorage.getItem("carrito"));
-};
-
-// Por el momento voy a dejar este array (acotado) hasta que veamos lo de AJAX
-// Igualmente, ya tengo armado un .json con las peliculas
-const PELICULAS = [
-  new Pelicula("Star Wars: A New Hope", "Ciencia Ficcion", 100),
-  new Pelicula("Top Gun", "Drama", 100),
-  new Pelicula("Scarface", "Accion", 100),
-  new Pelicula("Back to the Future", "Ciencia Ficcion", 100),
+const MOVIES = [
+  new Movie("Star Wars: A New Hope", "scienceFiction", 100),
+  new Movie("Top Gun", "drama", 100),
+  new Movie("Scarface", "action", 100),
+  new Movie("Back to the Future", "scienceFiction", 100),
 ];
 
-var carrito = new Carrito();
+var cart = new Cart();
 
-// Crea boton para ver contenido dentro del carrito
-function generarBotonCarrito() {
-  let padre = document.querySelector("#row1");
-  let btn = document.createElement("button");
-  btn.id = "verCarritoBtn";
-  btn.innerHTML = "Ver Carrito";
-  btn.className = "btn btn-success";
-  padre.insertAdjacentElement("afterend", btn);
-}
+// Funcion para obtener numero de id, para luego usar para comparar
+const getIdNumber = (tagId) => tagId.charAt(tagId.length - 1);
 
-// Lanza un alert con los elementos dentro del carrito cuando se aprieta el boton "Ver Carrito"
-function crearEventoParaBotonCarrito() {
-  document
-    .querySelector("#verCarritoBtn")
-    .addEventListener("click", function () {
-      let listado = [];
-      for (pelicula of recuperarCarritoDeLocalStorage()) {
-        listado.push(pelicula.titulo);
-      }
-      alert(
-        `${listado.join(", ")}\nEl total a abonar es $${carrito.totalCarrito()}`
-      );
-    });
-}
+// Funcion para recuperar el contenido del carrito del LocalStorage
+const getCartFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem("cart"));
+};
 
-/* Evento cuando el usuario hace click en uno de los botones para alquilar */
-// Se agrega la pelicula elegida a la lista del carrito
-// Si el carrito tiene 1 elemento o menos, se crea el boton para ver el contenido dentro del carrito
-document
-  .querySelector(".container-fluid")
-  .addEventListener("click", function (e) {
-    let listaPeliculas = document.querySelectorAll(
-      ".peliculas__tituloPelicula"
-    );
-    for (const pelicula of listaPeliculas) {
-      if (getIdNumber(e.target.id) == getIdNumber(pelicula.id)) {
-        carrito.sumarACarrito(pelicula.textContent.trim());
-        break; // hago esto para que una vez que encuentre la pelicula, deje de recorrer la lista. De esta manera, es un poco mas eficiente.
-      }
-    }
-    carrito.agregarALocalStorage();
-    if (
-      recuperarCarritoDeLocalStorage().length <= 1 &&
-      e.target.id != "verCarritoBtn"
-    ) {
-      generarBotonCarrito();
-      crearEventoParaBotonCarrito();
-    }
+// Funcion para agregar el contenido del carrito al LocalStorage
+const addToLocalStorage = (cart) => {
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
+
+// Manejo de evento para cerrar el modal que se abre al ver el carrito
+$("#closeModalBtn").click(() => {
+  $(".modal").hide();
+});
+
+// Manejo de evento para abrir el modal que muestra el contenido del carrito
+function eventHandlerForCartButton() {
+  $("#verCarritoBtn").click(() => {
+    $(".modal").fadeIn();
   });
+}
+
+// Funcion para crear el boton del carrito
+function createCartButton() {
+  $(
+    '<button class="btn btn-success" id="verCarritoBtn">Cart</button>'
+  ).insertAfter("#row1");
+}
+
+// Evento cuando el usuario hace click en uno de los botones para alquilar
+// Se agrega la pelicula elegida a la lista del carrito
+// Si el carrito tiene un elemento o menos, se crea el boton para ver el contenido dentro del carrito
+$("#moviesContainer").on("click", (e) => {
+  let movieList = $(".peliculas__tituloPelicula");
+  for (const movie of movieList) {
+    if (
+      $(e.target).hasClass("btn") &&
+      getIdNumber(e.target.id) == getIdNumber(movie.id)
+    ) {
+      cart.addToCart(movie.textContent.trim());
+      e.target.className = "btn btn-danger disabled";
+      e.target.textContent = "Rented";
+      break; // hago esto para que una vez que encuentre la pelicula, deje de recorrer la lista. De esta manera, es un poco mas eficiente.
+    }
+  }
+  addToLocalStorage(cart.cartProducts());
+  if (getCartFromLocalStorage().length <= 1 && e.target.id != "verCarritoBtn") {
+    createCartButton();
+    eventHandlerForCartButton();
+  }
+});
+
+// Event delegation para filtrar las peliculas por genero
+// Observacion: esta parte del codigo creo que podria mejorarla, pero
+// hasta el momento, no se me ocurrio una buena manera de hacerlo
+$("#filterButtonsContainer").on("click", (e) => {
+  switch (e.target.id) {
+    case "action":
+      $(".peliculas__action").fadeIn();
+      $(".peliculas__drama").hide();
+      $(".peliculas__scienceFiction").hide();
+      break;
+
+    case "drama":
+      $(".peliculas__action").hide();
+      $(".peliculas__drama").fadeIn();
+      $(".peliculas__scienceFiction").hide();
+      break;
+
+    case "scienceFiction":
+      $(".peliculas__action").hide();
+      $(".peliculas__drama").hide();
+      $(".peliculas__scienceFiction").fadeIn();
+      break;
+
+    case "all":
+      $(".peliculas__action").fadeIn();
+      $(".peliculas__drama").fadeIn();
+      $(".peliculas__scienceFiction").fadeIn();
+      break;
+
+    default:
+      break;
+  }
+});
