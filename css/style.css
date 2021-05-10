@@ -1,16 +1,28 @@
 body {
   background-color: #560a86; }
 
-.peliculas {
+#moviesContainer .peliculas {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 2%;
+  text-align: center; }
+  #moviesContainer .peliculas .card-img-top {
+    height: 420px; }
+  #moviesContainer .peliculas__pelicula .card-body {
+    display: flex;
+    flex-direction: column; }
+    #moviesContainer .peliculas__pelicula .card-body .rent-btn {
+      margin-top: auto;
+      align-self: center; }
+
+#carritoList {
   display: flex;
   flex-direction: column;
-  text-align: center; }
-  .peliculas__lista {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly; }
-  .peliculas__tituloPelicula {
-    color: #ffff; }
+  justify-content: center; }
+  #carritoList .card .row .cart-image {
+    width: 150px;
+    height: auto; }
 
 #verCarritoBtn {
   position: fixed;
@@ -32,3 +44,8 @@ body {
 
 .nav-item {
   margin: 1%; }
+
+#cart-total-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }

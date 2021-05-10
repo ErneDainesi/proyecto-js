@@ -2,19 +2,40 @@ body {
   background-color: #560a86;
 }
 
-.peliculas {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-
-  &__lista {
+#moviesContainer {
+  .peliculas {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-bottom: 2%;
+    text-align: center;
+    .card-img-top {
+      height: 420px;
+    }
+    &__pelicula {
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        .rent-btn {
+          margin-top: auto;
+          align-self: center;
+        }
+      }
+    }
   }
+}
 
-  &__tituloPelicula {
-    color: #ffff;
+#carritoList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .card {
+    .row {
+      .cart-image {
+        width: 150px;
+        height: auto;
+      }
+    }
   }
 }
 
@@ -44,4 +65,10 @@ body {
   &-item {
     margin: 1%;
   }
+}
+
+#cart-total-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

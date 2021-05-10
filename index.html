@@ -36,62 +36,33 @@
               Science Fiction
             </button>
           </li>
+          <li class="nav-item">
+            <button class="btn btn-secondary" id="adventure">Adventure</button>
+          </li>
         </ul>
       </div>
 
-      <div id="moviesContainer">
-        <div class="row peliculas col-lg-12" id="row1">
-          <div class="peliculas__lista" id="lista1">
-            <div class="peliculas__pelicula peliculas__scienceFiction">
-              <img
-                src="./images/star-wars-a-new-hope.jpg"
-                alt="star-wars-a-new-hope"
-                id="imagen1"
-              />
-              <h4 class="peliculas__tituloPelicula" id="pelicula1">
-                Star Wars: A New Hope
-              </h4>
-              <button class="btn btn-secondary" id="alquilar1">Rent</button>
-            </div>
-            <div class="peliculas__pelicula peliculas__drama">
-              <img
-                src="./images/top-gun.jpg"
-                alt="back-to-the-future"
-                id="imagen2"
-              />
-              <h4 class="peliculas__tituloPelicula" id="pelicula2">Top Gun</h4>
-              <button class="btn btn-secondary" id="alquilar2">Rent</button>
-            </div>
-            <div class="peliculas__pelicula peliculas__action">
-              <img src="./images/scarface.jpg" alt="scarface" id="imagen3" />
-              <h4 class="peliculas__tituloPelicula" id="pelicula3">Scarface</h4>
-              <button class="btn btn-secondary" id="alquilar3">Rent</button>
-            </div>
-            <div class="peliculas__pelicula peliculas__scienceFiction">
-              <img
-                src="./images/back-to-the-future.jpg"
-                alt="back-to-the-future"
-                id="imagen4"
-              />
-              <h4 class="peliculas__tituloPelicula" id="pelicula4">
-                Back to the Future
-              </h4>
-              <button class="btn btn-secondary" id="alquilar4">Rent</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="row" id="moviesContainer"></div>
 
-      <div class="modal" tabindex="-1">
-        <div class="modal-dialog">
+      <div class="modal cart-modal" id="cart-content-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">Cart</h5>
             </div>
             <div class="modal-body">
               <ul id="carritoList"></ul>
+              <div class="card">
+                <div class="card-body" id="cart-total-card">
+                  <h5 id="cart-total-header">Total</h5>
+                  <p id="cart-total"></p>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
+              <button type="button" class="btn btn-success" id="buy-btn">
+                Rent Now
+              </button>
               <button
                 type="button"
                 class="btn btn-secondary"
