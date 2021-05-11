@@ -1,4 +1,4 @@
-const URLJSON = "../peliculas.json";
+const URLJSON = "./peliculas.json";
 const MOVIES = [];
 
 var cart = new Cart();
