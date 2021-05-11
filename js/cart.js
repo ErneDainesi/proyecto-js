@@ -52,7 +52,6 @@ class Cart {
   // contenido del carrito y automaticamente se cierra el modal que muestra
   // el contenido del carrito
   remove(idNumber) {
-    console.log(this.insideCart);
     for (movie of this.insideCart) {
       if (movie.movieIdNumber() == idNumber) {
         let index = this.insideCart.indexOf(movie);
@@ -61,6 +60,7 @@ class Cart {
         let rentBtn = $(`#r-btn-${idNumber}`);
         rentBtn.removeClass("btn-danger disabled");
         rentBtn.addClass("btn-secondary");
+        rentBtn.text("Rent");
         break;
       }
     }
@@ -68,6 +68,5 @@ class Cart {
       $("#verCarritoBtn").remove();
       $("#cart-content-modal").fadeOut();
     }
-    console.log(this.insideCart);
   }
 }
