@@ -53,20 +53,28 @@ function appendMovieToRow(movie, rowId, idNumber) {
 // A partir de peliculas.json, se sacan los datos de cada pelicula y se crean
 // cards con imagen, titulo y un boton de compra.
 $.getJSON(URLJSON, (data) => {
-  let rowNumber = 0;
-  let moviesContainer = $("#moviesContainer");
-  let currentRowId;
-  for (let i = 0; i < data.length; i++) {
-    if (i % 4 == 0) {
-      // Si ya inserté 4 peliculas en una fila, voy a la siguiente fila
-      rowNumber += 1;
-      currentRowId = insertNewRow(rowNumber, moviesContainer);
+})
+  .done((data) => {
+    let rowNumber = 0;
+    let moviesContainer = $("#moviesContainer");
+    let currentRowId;
+    for (let i = 0; i < data.length; i++) {
+      if (i % 4 == 0) {
+        // Si ya inserté 4 peliculas en una fila, voy a la siguiente fila
+        rowNumber += 1;
+        currentRowId = insertNewRow(rowNumber, moviesContainer);
+      }
+      let movie = new Movie(data[i]);
+      appendMovieToRow(movie, currentRowId, movie.movieIdNumber());
+      MOVIES.push(movie);
     }
-    let movie = new Movie(data[i]);
-    appendMovieToRow(movie, currentRowId, movie.movieIdNumber());
-    MOVIES.push(movie);
-  }
-});
+  })
+  .fail(() => {
+    console.log("error");
+  })
+  .always(() => {
+    console.log("complete");
+  });
 
 // Manejo de evento para cerrar el modal que se abre al ver el carrito
 $("#closeModalBtn").click(() => {
