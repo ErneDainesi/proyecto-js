@@ -56,11 +56,13 @@ class Cart {
       if (movie.movieIdNumber() == idNumber) {
         let index = this.insideCart.indexOf(movie);
         this.insideCart.splice(index, 1);
+        this.total -= movie.moviePrice();
         $(`#rmodal${idNumber}`).remove();
         let rentBtn = $(`#r-btn-${idNumber}`);
         rentBtn.removeClass("btn-danger disabled");
         rentBtn.addClass("btn-secondary");
         rentBtn.text("Rent");
+        $("#cart-total").text(`$${this.total}`)
         break;
       }
     }
