@@ -124,7 +124,7 @@ $("#moviesContainer").on("click", (e) => {
   }
   addToLocalStorage(cart.cartProducts());
   if (
-    getCartFromLocalStorage().length <= 1 &&
+    getCartFromLocalStorage().length > 0 &&
     $(e.target).hasClass("rent-btn") &&
     $("#verCarritoBtn").length < 1
   ) {
