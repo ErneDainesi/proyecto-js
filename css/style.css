@@ -1,5 +1,7 @@
 body {
-  background-color: #560a86; }
+  background-image: url("../../images/backgroung.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
 
 #moviesContainer .peliculas {
   display: flex;
@@ -11,10 +13,30 @@ body {
     height: 420px; }
   #moviesContainer .peliculas__pelicula .card-body {
     display: flex;
-    flex-direction: column; }
-    #moviesContainer .peliculas__pelicula .card-body .rent-btn {
-      margin-top: auto;
-      align-self: center; }
+    flex-direction: column;
+    text-align: center; }
+    #moviesContainer .peliculas__pelicula .card-body .card-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      margin-top: auto; }
+
+.container-fluid .social-media {
+  display: flex;
+  flex-direction: row; }
+
+.container-fluid .fab {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  font-size: 1.8rem; }
+
+.container-fluid .linkedin {
+  margin-right: 1rem;
+  color: #fff; }
+
+.container-fluid .github {
+  margin-left: 1rem;
+  color: #fff; }
 
 #carritoList {
   display: flex;
@@ -49,3 +71,14 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between; }
+
+@media only screen and (max-width: 768px) {
+  #moviesContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center; }
+    #moviesContainer .peliculas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; } }

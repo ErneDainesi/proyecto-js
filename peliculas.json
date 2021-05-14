@@ -4,83 +4,107 @@
     "genre": "adventure",
     "price": 100,
     "image": "./images/lost-ark.jpg",
-    "idNumber": 1
+    "idNumber": 1,
+    "videoLink": "https://www.youtube.com/embed/0xQSIdSRlAk",
+    "movieSynopsis": "In 1936, archaeologist and adventurer Indiana Jones is hired by the U.S. government to find the Ark of the Covenant before Adolf Hitler's Nazis can obtain its awesome powers."
   },
   {
     "title": "Indiana Jones and The Temple of Doom",
     "genre": "adventure",
     "price": 100,
     "image": "./images/temple-of-doom.jpg",
-    "idNumber": 2
+    "idNumber": 2,
+    "videoLink": "https://www.youtube.com/embed/WBdyLyijZhU",
+    "movieSynopsis": "In 1935, Indiana Jones arrives in India, still part of the British Empire, and is asked to find a mystical stone. He then stumbles upon a secret cult committing enslavement and human sacrifices in the catacombs of an ancient palace."
   },
   {
     "title": "Indiana Jones and The Last Crusade",
     "genre": "adventure",
     "price": 100,
     "image": "./images/last-crusade.jpg",
-    "idNumber": 3
+    "idNumber": 3,
+    "videoLink": "https://www.youtube.com/embed/DKg36LBVgfg",
+    "movieSynopsis": "In 1938, after his father Professor Henry Jones, Sr. goes missing while pursuing the Holy Grail, Professor Henry Indiana Jones, Jr. finds himself up against Adolf Hitler's Nazis again to stop them from obtaining its powers."
   },
   {
     "title": "Star Wars: A New Hope",
     "genre": "scienceFiction",
     "price": 100,
     "image": "./images/star-wars-a-new-hope.jpg",
-    "idNumber": 4
+    "idNumber": 4,
+    "videoLink": "https://www.youtube.com/embed/vZ734NWnAHA",
+    "movieSynopsis": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader."
   },
   {
     "title": "Star Wars: Empire Strikes Back",
     "genre": "scienceFiction",
     "price": 100,
     "image": "./images/empire.jpg",
-    "idNumber": 5
+    "idNumber": 5,
+    "videoLink": "https://www.youtube.com/embed/JNwNXF9Y6kY",
+    "movieSynopsis": "After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader and a bounty hunter named Boba Fett all over the galaxy."
   },
   {
     "title": "Star Wars: Return of the Jedi",
     "genre": "scienceFiction",
     "price": 100,
     "image": "./images/jedi.jpg",
-    "idNumber": 6
+    "idNumber": 6,
+    "videoLink": "https://www.youtube.com/embed/7L8p7_SLzvU",
+    "movieSynopsis": "After a daring mission to rescue Han Solo from Jabba the Hutt, the Rebels dispatch to Endor to destroy the second Death Star. Meanwhile, Luke struggles to help Darth Vader back from the dark side without falling into the Emperor's trap."
   },
   {
     "title": "Top Gun",
     "genre": "drama",
     "price": 100,
     "image": "./images/top-gun.jpg",
-    "idNumber": 7
+    "idNumber": 7,
+    "videoLink": "https://www.youtube.com/embed/xa_z57UatDY",
+    "movieSynopsis": "As students at the United States Navy's elite fighter weapons school compete to be best in the class, one daring young pilot learns a few things from a civilian instructor that are not taught in the classroom."
   },
   {
     "title": "Scarface",
     "genre": "action",
     "price": 100,
     "image": "./images/scarface.jpg",
-    "idNumber": 8
+    "idNumber": 8,
+    "videoLink": "https://www.youtube.com/embed/7pQQHnqBa2E",
+    "movieSynopsis": "In 1980 Miami, a determined Cuban immigrant takes over a drug cartel and succumbs to greed."
   },
   {
     "title": "Back to the Future",
     "genre": "scienceFiction",
     "price": 100,
     "image": "./images/back-to-the-future.jpg",
-    "idNumber": 9
+    "idNumber": 9,
+    "videoLink": "https://www.youtube.com/embed/qvsgGtivCgs",
+    "movieSynopsis": "Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the eccentric scientist Doc Brown."
   },
   {
     "title": "Back to the Future II",
     "genre": "scienceFiction",
     "price": 100,
     "image": "./images/back-to-the-future-2.jpg",
-    "idNumber": 10
+    "idNumber": 10,
+    "videoLink": "https://www.youtube.com/embed/MdENmefJRpw",
+    "movieSynopsis": "After visiting 2015, Marty McFly must repeat his visit to 1955 to prevent disastrous changes to 1985...without interfering with his first trip."
   },
   {
     "title": "Back to the Future III",
     "genre": "scienceFiction",
     "price": 100,
     "image": "./images/back-to-the-future-3.jpg",
-    "idNumber": 11
+    "idNumber": 11,
+    "videoLink": "https://www.youtube.com/embed/3C8c3EoEfw4",
+    "movieSynopsis": "Stranded in 1955, Marty McFly learns about the death of Doc Brown in 1885 and must travel back in time to save him. With no fuel readily available for the DeLorean, the two must figure how to escape the Old West before Emmett is murdered."
   },
   {
     "title": "Pulp Fiction",
     "genre": "action",
     "price": 100,
     "image": "./images/pulp-fiction.jpg",
-    "idNumber": 12
+    "idNumber": 12,
+    "videoLink": "https://www.youtube.com/embed/s7EdQ4FqbhY",
+    "movieSynopsis": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption."
   }
 ]
