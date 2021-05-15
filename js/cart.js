@@ -60,7 +60,7 @@ class Cart {
         $(`#rmodal${idNumber}`).remove();
         let rentBtn = $(`#r-btn-${idNumber}`);
         rentBtn.removeClass("btn-danger disabled");
-        rentBtn.addClass("btn-secondary");
+        rentBtn.addClass("btn-success");
         rentBtn.text("Rent");
         $("#cart-total").text(`$${this.total}`)
         break;

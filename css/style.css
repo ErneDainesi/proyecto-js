@@ -3,14 +3,23 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed; }
 
+footer {
+  display: flex;
+  justify-content: flex-end;
+  color: #fff;
+  margin-right: 2rem; }
+
 #moviesContainer .peliculas {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 2%;
   text-align: center; }
   #moviesContainer .peliculas .card-img-top {
     height: 420px; }
+  #moviesContainer .peliculas .card {
+    margin: 0rem 3rem 2rem 3rem; }
   #moviesContainer .peliculas__pelicula .card-body {
     display: flex;
     flex-direction: column;
@@ -79,14 +88,3 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between; }
-
-@media only screen and (max-width: 768px) {
-  #moviesContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center; }
-    #moviesContainer .peliculas {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center; } }

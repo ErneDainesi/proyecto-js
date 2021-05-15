@@ -38,8 +38,8 @@ const removeMovieFromLocalStorage = (movieId) => {
 /********** FUNCIONES AUXILIARES **********/
 /*****************************************/
 
-// Inserta una nueva fila al DOM y devuelve su id
-function insertNewRow(rowNumber, moviesContainer) {
+// Inserta una fila al DOM y devuelve su id
+function insertRow(rowNumber, moviesContainer) {
   moviesContainer.append(`
       <div class="peliculas" id="movie-row-${rowNumber}"></div>
   `);
@@ -55,7 +55,7 @@ function appendMovieToRow(movie, rowId, idNumber) {
           <h5 class="card-title peliculas__tituloPelicula">${movie.movieTitle()}</h5>
           <div class="card-buttons">
             <button class="btn btn-secondary prev-btn" id="p-btn-${idNumber}">Preview</button>
-            <button class="btn btn-secondary rent-btn" id="r-btn-${idNumber}">Rent</button>
+            <button class="btn btn-success rent-btn" id="r-btn-${idNumber}">Rent</button>
           </div>
         </div>
       </div>`);
@@ -156,17 +156,10 @@ function previewEventHandler(e) {
 $.getJSON(URLJSON, (data) => {
 })
   .done((data) => {
-    let rowNumber = 0;
-    let moviesContainer = $("#moviesContainer");
-    let currentRowId;
+    let rowId = insertRow(1, $("#moviesContainer"));
     for (let i = 0; i < data.length; i++) {
-      if (i % 4 == 0) {
-        // Si ya inserté 4 peliculas en una fila, voy a la siguiente fila
-        rowNumber += 1;
-        currentRowId = insertNewRow(rowNumber, moviesContainer);
-      }
       let movie = new Movie(data[i]);
-      appendMovieToRow(movie, currentRowId, movie.movieIdNumber());
+      appendMovieToRow(movie, rowId, movie.movieIdNumber());
       MOVIES.push(movie);
     }
   })
@@ -178,7 +171,7 @@ $.getJSON(URLJSON, (data) => {
           <h1>Whoops! Something went wrong, try refreshing the page</h1>
         </div>
     `);
-    console.log("error");
+    console.log(`[ERROR] ${URLJSON} was not found`);
   });
 
 // Manejo de evento para cerrar el modal que se abrio
