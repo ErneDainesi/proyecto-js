@@ -77,7 +77,8 @@ function createCartButton() {
   ).insertAfter("#moviesContainer");
 }
 
-// Funcion que rellena el modal donde va a estar
+// Funcion que rellena el modal del preview 
+// de la pelicula donde va a estar
 // el trailer y la sinopsis de la pelicula
 function fillPreviewModal(movie, modal) {
   let modalChildren = `
@@ -171,6 +172,12 @@ $.getJSON(URLJSON, (data) => {
   })
   .fail(() => {
     // Mostrar mensaje de error
+    $("#moviesContainer").append(`
+        <div class="ajax-error-message">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h1>Whoops! Something went wrong, try refreshing the page</h1>
+        </div>
+    `);
     console.log("error");
   });
 

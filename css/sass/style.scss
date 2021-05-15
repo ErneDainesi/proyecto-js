@@ -28,7 +28,17 @@ body {
       }
     }
   }
+  .ajax-error-message {
+    text-align: center;
+    color: #000;
+    font-size: 6rem;
+    background-color: #08f7fe;
+    width: 50%;
+    margin: 0 auto;
+  }
 }
+
+
 
 .container-fluid {
     .social-media {
